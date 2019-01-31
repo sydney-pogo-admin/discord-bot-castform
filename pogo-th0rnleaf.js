@@ -47,6 +47,22 @@ const labelmap = ({
   windy:                  { dominant: 'windy',        superficial: {} },
 })
 
+const windyList = [
+  'clear',
+  'cloudy',
+  'dreary',
+  'hazysunshine',
+  'hazymoonlight',
+  'intermittentclouds',
+  'mostlyclear',
+  'mostlycloudy',
+  'mostlysunny',
+  'partlycloudy',
+  'partlysunny',
+  'sunny',
+  'windy',  
+]
+
 const thresholds = {
   dominant: {
     wind: 24.1,
@@ -65,7 +81,8 @@ const aw2pogo = ({
   gust,
 }) => {
   const weather = labelmap[label]
-  const windyable = [weather.dominant, ...Object.keys(weather.superficial)].some(label => ['rain', 'snow', 'fog'].includes(label))
+  // const windyable = [weather.dominant, ...Object.keys(weather.superficial)].some(label => ['rain', 'snow', 'fog'].includes(label))
+  const windyable = windyList.includes(label)
   const windy = wind >= thresholds.dominant.wind || gust >= thresholds.dominant.gust
   return {
     dominant: windyable && windy ? 'windy' : weather.dominant,
