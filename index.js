@@ -11,8 +11,8 @@ const pogo = require('./pogo-th0rnleaf')
 const { run, hour2meridian } = require('./utils')
 
 const FORECASTOFFSET = 0
-const HOURS = new Array(3).fill(0+1).map((v, i) => new String(v+i*8).padStart(2, '0')) // DEBUG: for the off-DST months it started at 0
-// const HOURS = new Array(24).fill().map((_, i) => `${i}`.padStart(2, '0')) // Debug: ALL DAY, EVERY DAY
+// const HOURS = new Array(3).fill(0+1).map((v, i) => new String(v+i*8).padStart(2, '0')) // DEBUG: for the off-DST months it started at 0
+const HOURS = new Array(24).fill().map((_, i) => `${i}`.padStart(2, '0')) // Debug: ALL DAY, EVERY DAY
 const JSONDB = require('node-json-db')
 
 run(async () => {  
@@ -29,7 +29,7 @@ run(async () => {
     // Get forecast and predictions
     const weathers$ = pipe(
       merge(
-        ...HOURS.map(hour => timer(new Date(`2018-01-01T${hour}:05${location.timezone}`), 24*60*60*1000)),
+        ...HOURS.map(hour => timer(new Date(`2018-01-01T${hour}:15${location.timezone}`), 24*60*60*1000)),
         // of(0) //DEBUG: Triggers query at start even if it's not time
       ),
       map(_ => location),

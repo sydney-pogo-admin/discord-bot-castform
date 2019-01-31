@@ -1,12 +1,12 @@
 {  
-  "kolkata":{  
-    "name":"Kolkata",
-    "id":"206690",
-    "timezone":"+05:30"
+  "mascot":{  
+    "name":"Mascot",
+    "id":"17234",
+    "timezone":"+11:00"
   },
-  "saltlake":{  
-    "name":"Saltlake",
-    "id":"3318389",
-    "timezone":"+05:30"
+  "maroubra":{
+	  "name":"Maroubra",
+	  "id":"17229",
+	  "timezone":"+11:00"
   }
 }
