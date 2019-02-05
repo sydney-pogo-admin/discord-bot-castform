@@ -65,8 +65,9 @@ const windyList = [
 
 const thresholds = {
   dominant: {
-    wind: 24.1,
-    gust: 31.1,
+    wind: 24,
+    gust: 35,
+    windsum: 55.5,
   },
   superficial: {
     // rain: 50,
@@ -83,7 +84,9 @@ const aw2pogo = ({
   const weather = labelmap[label]
   // const windyable = [weather.dominant, ...Object.keys(weather.superficial)].some(label => ['rain', 'snow', 'fog'].includes(label))
   const windyable = windyList.includes(label)
-  const windy = wind >= thresholds.dominant.wind || gust >= thresholds.dominant.gust
+  const windsum = wind + gust
+  const windy = windsum > thresholds.dominant.windsum
+  // const windy = wind > thresholds.dominant.wind || gust > thresholds.dominant.gust
   return {
     dominant: windyable && windy ? 'windy' : weather.dominant,
     superficial: {

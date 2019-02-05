@@ -66,7 +66,7 @@ run(async () => {
           value: '​', 
           inline: true
         }]
-          .concat(weathers.slice(...[0, 8].map(x => x + FORECASTOFFSET)).map(({hour, prediction}) => { // DEBUG: Next 8 hours
+          .concat(weathers.slice(...[0, 12].map(x => x + FORECASTOFFSET)).map(({hour, prediction}) => { // DEBUG: Next 8 hours
             const superficials = Object.keys(prediction.superficial)
               .filter(k => prediction.superficial[k] && k != prediction.dominant)
               .map(k => pogo.labelEmotes[k])
